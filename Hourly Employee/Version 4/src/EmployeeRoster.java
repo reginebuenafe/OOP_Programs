@@ -36,10 +36,13 @@ public class EmployeeRoster extends Employee {
     int countCE() {
         int ceCount = 0;
         for (Employee e : emplist) {
-            if (e instanceof CommissionEmployee) ceCount++;
+            if (e instanceof CommissionEmployee && !(e instanceof BasedPlusCommissionEmployee)) {
+                ceCount++;
+            }
         }
         return ceCount;
     }
+
 
     int countBCPE() {
         int bcpeCount = 0;
