@@ -1,14 +1,14 @@
-public class Employee {
+public abstract class Employee {
     private int empID;
     private String empName;
 
     public Employee() {}
 
-    public Employee (int empID) {
+    public Employee(int empID) {
         this.empID = empID;
     }
 
-    public Employee (String empName) {
+    public Employee(String empName) {
         this.empName = empName;
     }
 
@@ -41,6 +41,8 @@ public class Employee {
     public void displayEmployee() {
         System.out.println(this);
     }
+
+    public abstract double computeSalary();
 
     @Override
     public String toString() {

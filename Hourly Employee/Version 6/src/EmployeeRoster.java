@@ -1,14 +1,30 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeRoster extends Employee {
-    private List<Employee> emplist = new ArrayList<>();
+public class EmployeeRoster {
+    private List<Employee> emplist;
 
-    boolean addEmployee(Employee e) {
+    public EmployeeRoster() {
+        emplist = new ArrayList<>();
+    }
+
+    public EmployeeRoster(List<Employee> initialEmployees) {
+        emplist = new ArrayList<>(initialEmployees);
+    }
+
+    public EmployeeRoster(int initialCapacity) {
+        emplist = new ArrayList<>(initialCapacity);
+    }
+
+    public List<Employee> getEmployeeList() {
+        return emplist;
+    }
+
+    public boolean addEmployee(Employee e) {
         return emplist.add(e);
     }
 
-    Employee removeEmployee(int id) {
+    public Employee removeEmployee(int id) {
         for (int i = 0; i < emplist.size(); i++) {
             if (emplist.get(i).getEmpID() == id) {
                 return emplist.remove(i);
@@ -17,35 +33,36 @@ public class EmployeeRoster extends Employee {
         return null;
     }
 
-    int countHE() {
+    public int countHE() {
         return (int) emplist.stream().filter(e -> e instanceof HourlyEmployee).count();
     }
 
-    int countCE() {
+    public int countCE() {
         return (int) emplist.stream().filter(e -> e instanceof CommissionEmployee && !(e instanceof BasedPlusCommissionEmployee)).count();
     }
 
-    int countBCPE() {
+    public int countBCPE() {
         return (int) emplist.stream().filter(e -> e instanceof BasedPlusCommissionEmployee).count();
     }
 
-    int countPWE() {
+    public int countPWE() {
         return (int) emplist.stream().filter(e -> e instanceof PieceWorkerEmployee).count();
     }
 
-    void displayHE() {
+    public void displayHE() {
         emplist.stream().filter(e -> e instanceof HourlyEmployee).forEach(System.out::println);
     }
 
-    void displayCE() {
+    public void displayCE() {
         emplist.stream().filter(e -> e instanceof CommissionEmployee).forEach(System.out::println);
     }
 
-    void displayBCPE() {
+    public void displayBCPE() {
         emplist.stream().filter(e -> e instanceof BasedPlusCommissionEmployee).forEach(System.out::println);
     }
 
-    void displayPWE() {
+    public void displayPWE() {
         emplist.stream().filter(e -> e instanceof PieceWorkerEmployee).forEach(System.out::println);
     }
+
 }
