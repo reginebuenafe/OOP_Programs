@@ -15,6 +15,23 @@ public class Main {
         roster.addEmployee(emp4);
         roster.addEmployee(emp5);
 
+        System.out.println("Number of Hourly Employees: " + roster.countHE());
+        System.out.println("Number of Commission Employees: " + roster.countCE());
+        System.out.println("Number of Based Plus Commission Employees: " + roster.countBCPE());
+        System.out.println("Number of Piece Worker Employees: " + roster.countPWE());
+
+        System.out.println("\nHourly Employees:");
+        roster.displayHE();
+
+        System.out.println("\nCommission Employees:");
+        roster.displayCE();
+
+        System.out.println("\nBased Plus Commission Employees:");
+        roster.displayBCPE();
+
+        System.out.println("\nPiece Worker Employees:");
+        roster.displayPWE();
+
         System.out.println("Employees: ");
         roster.displayAllEmp();
     }
