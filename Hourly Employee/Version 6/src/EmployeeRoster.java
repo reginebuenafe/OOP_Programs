@@ -65,4 +65,20 @@ public class EmployeeRoster {
         emplist.stream().filter(e -> e instanceof PieceWorkerEmployee).forEach(System.out::println);
     }
 
+    public void displayAllEmp() {
+        if (emplist.isEmpty()) {
+            System.out.println("No employees available.");
+            return;
+        }
+
+        System.out.printf("%-15s %-20s %-30s %-20s\n", "Employee ID", "Employee Name", "Employee Type", "Salary");
+        System.out.println("--------------------------------------------------------------------------------------------");
+
+        for (Employee e : emplist) {
+            String employeeType = e.getClass().getSimpleName();
+            double salary = e.computeSalary();
+            System.out.printf("%-15d %-20s %-30s %-20.2f \n", e.getEmpID(), e.getEmpName(), employeeType, salary);
+        }
+    }
+
 }
