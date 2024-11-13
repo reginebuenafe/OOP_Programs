@@ -1,14 +1,14 @@
-public class Employee {
+public abstract class Employee implements IntEmployee {
     private int empID;
     private String empName;
 
     public Employee() {}
 
-    public Employee (int empID) {
+    public Employee(int empID) {
         this.empID = empID;
     }
 
-    public Employee (String empName) {
+    public Employee(String empName) {
         this.empName = empName;
     }
 
@@ -38,15 +38,10 @@ public class Employee {
         return empName;
     }
 
-    public void displayEmployee() {
-        System.out.println(this);
-    }
+    public abstract double computeSalary();
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Employee ID: ").append(getEmpID()).append("\n")
-                .append("Employee Name: ").append(getEmpName()).append("\n");
-        return sb.toString();
+        return "Employee ID: " + empID + "\nEmployee Name: " + empName;
     }
 }

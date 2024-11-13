@@ -28,6 +28,7 @@ public class CommissionEmployee extends Employee {
         return totalSales;
     }
 
+    @Override
     public double computeSalary() {
         double salary;
         if (totalSales < 10000) {
@@ -42,7 +43,7 @@ public class CommissionEmployee extends Employee {
         return salary;
     }
 
-    public void displayHourlyEmployee() {
+    public void displayCommissionEmployee() {
         System.out.println(this);
         System.out.println("Salary: " + computeSalary());
     }
@@ -51,8 +52,8 @@ public class CommissionEmployee extends Employee {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Employee ID: ").append(getEmpID()).append("\n");
-        sb.append("Employee name: ").append(getEmpName()).append("\n");
-        sb.append("Total sales: ").append(getTotalSales()).append("\n");
+        sb.append("Employee Name: ").append(getEmpName()).append("\n");
+        sb.append("Total Sales: ").append(getTotalSales()).append("\n");
         return sb.toString();
     }
 }

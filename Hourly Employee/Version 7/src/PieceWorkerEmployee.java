@@ -23,15 +23,15 @@ public class PieceWorkerEmployee extends Employee {
         this.ratePerPiece = ratePerPiece;
     }
 
-    public void setFinishedPieces (int totalPiecesFinished) {
+    public void setFinishedPieces(int totalPiecesFinished) {
         this.totalPiecesFinished = totalPiecesFinished;
     }
 
-    public int getFinishedPieces () {
+    public int getFinishedPieces() {
         return this.totalPiecesFinished;
     }
 
-    public void setRate (double ratePerPiece) {
+    public void setRate(double ratePerPiece) {
         this.ratePerPiece = ratePerPiece;
     }
 
@@ -39,11 +39,12 @@ public class PieceWorkerEmployee extends Employee {
         return this.ratePerPiece;
     }
 
+    @Override
     public double computeSalary() {
         return totalPiecesFinished * ratePerPiece + ((int) totalPiecesFinished / 100) * (10 * ratePerPiece);
     }
 
-    public void displayHourlyEmployee() {
+    public void displayPieceWorkerEmployee() {
         System.out.println(this);
         System.out.println("Salary: " + computeSalary());
     }
@@ -52,9 +53,9 @@ public class PieceWorkerEmployee extends Employee {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Employee ID: ").append(getEmpID()).append("\n");
-        sb.append("Employee name: ").append(getEmpName()).append("\n");
-        sb.append("Total hours worked: ").append(getFinishedPieces()).append("\n");
-        sb.append("Rate per hour: ").append(getRate()).append("\n");
+        sb.append("Employee Name: ").append(getEmpName()).append("\n");
+        sb.append("Total Pieces Finished: ").append(getFinishedPieces()).append("\n");
+        sb.append("Rate per Piece: ").append(getRate()).append("\n");
         return sb.toString();
     }
 }

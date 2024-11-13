@@ -20,7 +20,6 @@ public class BasedPlusCommissionEmployee extends CommissionEmployee {
         this.baseSalary = baseSalary;
     }
 
-
     public BasedPlusCommissionEmployee(int empID, String empName, double totalSales, double baseSalary) {
         super(empID, empName, totalSales);
         this.baseSalary = baseSalary;
@@ -39,7 +38,7 @@ public class BasedPlusCommissionEmployee extends CommissionEmployee {
         return super.computeSalary() + baseSalary;
     }
 
-    public void displayHourlyEmployee() {
+    public void displayBasedPlusCommissionEmployee() {
         System.out.println(this);
         System.out.println("Salary: " + computeSalary());
     }
@@ -48,10 +47,9 @@ public class BasedPlusCommissionEmployee extends CommissionEmployee {
     public String toString() {
         StringBuilder sb = new StringBuilder()
                 .append("Employee ID: ").append(getEmpID()).append("\n")
-                .append("Employee name: ").append(getEmpName()).append("\n")
-                .append("Base salary: ").append(getBaseSalary()).append("\n")
-                .append("Total sales: ").append(getTotalSales()).append("\n");
+                .append("Employee Name: ").append(getEmpName()).append("\n")
+                .append("Base Salary: ").append(getBaseSalary()).append("\n")
+                .append("Total Sales: ").append(getTotalSales()).append("\n");
         return sb.toString();
     }
-
 }

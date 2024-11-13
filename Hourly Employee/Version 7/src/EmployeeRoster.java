@@ -1,94 +1,84 @@
-public class EmployeeRoster extends Employee {
-    private Employee[] emplist = new Employee[5];
-    private int count = 0;
-    private int max = 5;
+import java.util.ArrayList;
+import java.util.List;
 
-    boolean addEmployee(Employee e) {
-        if (count < max) {
-            emplist[count++] = e;
-            return true;
-        }
-        return false;
+public class EmployeeRoster {
+    private List<Employee> emplist;
+
+    public EmployeeRoster() {
+        emplist = new ArrayList<>();
     }
 
-    Employee removeEmployee(int id) {
-        for (int i = 0; i < count; i++) {
-            if (emplist[i].getEmpID() == id) {
-                Employee removedEmployee = emplist[i];
-                for (int j = i; j < count - 1; j++) {
-                    emplist[j] = emplist[j + 1];
-                }
-                emplist[--count] = null;
-                return removedEmployee;
+    public EmployeeRoster(List<Employee> initialEmployees) {
+        emplist = new ArrayList<>(initialEmployees);
+    }
+
+    public EmployeeRoster(int initialCapacity) {
+        emplist = new ArrayList<>(initialCapacity);
+    }
+
+    public List<Employee> getEmployeeList() {
+        return emplist;
+    }
+
+    public boolean addEmployee(Employee e) {
+        return emplist.add(e);
+    }
+
+    public Employee removeEmployee(int id) {
+        for (int i = 0; i < emplist.size(); i++) {
+            if (emplist.get(i).getEmpID() == id) {
+                return emplist.remove(i);
             }
         }
         return null;
     }
 
-    int countHE() {
-        int heCount = 0;
-        for (Employee e : emplist) {
-            if (e instanceof HourlyEmployee) heCount++;
-        }
-        return heCount;
+    public int countHE() {
+        return (int) emplist.stream().filter(e -> e instanceof HourlyEmployee).count();
     }
 
-    int countCE() {
-        int ceCount = 0;
-        for (Employee e : emplist) {
-            if (e instanceof CommissionEmployee && !(e instanceof BasedPlusCommissionEmployee)) {
-                ceCount++;
-            }
-        }
-        return ceCount;
+    public int countCE() {
+        return (int) emplist.stream().filter(e -> e instanceof CommissionEmployee && !(e instanceof BasedPlusCommissionEmployee)).count();
     }
 
-
-    int countBCPE() {
-        int bcpeCount = 0;
-        for (Employee e : emplist) {
-            if (e instanceof BasedPlusCommissionEmployee) bcpeCount++;
-        }
-        return bcpeCount;
+    public int countBCPE() {
+        return (int) emplist.stream().filter(e -> e instanceof BasedPlusCommissionEmployee).count();
     }
 
-    int countPWE() {
-        int pweCount = 0;
-        for (Employee e : emplist) {
-            if (e instanceof PieceWorkerEmployee) pweCount++;
-        }
-        return pweCount;
+    public int countPWE() {
+        return (int) emplist.stream().filter(e -> e instanceof PieceWorkerEmployee).count();
     }
 
-    void displayHE() {
-        for (Employee e : emplist) {
-            if (e instanceof HourlyEmployee) {
-                System.out.println(e);
-            }
-        }
+    public void displayHE() {
+        emplist.stream().filter(e -> e instanceof HourlyEmployee).forEach(System.out::println);
     }
 
-    void displayCE() {
+    public void displayCE() {
+        emplist.stream().filter(e -> e instanceof CommissionEmployee).forEach(System.out::println);
+    }
+
+    public void displayBCPE() {
+        emplist.stream().filter(e -> e instanceof BasedPlusCommissionEmployee).forEach(System.out::println);
+    }
+
+    public void displayPWE() {
+        emplist.stream().filter(e -> e instanceof PieceWorkerEmployee).forEach(System.out::println);
+    }
+
+    public void displayAllEmp() {
+        if (emplist.isEmpty()) {
+            System.out.println("No employees available.");
+            return;
+        }
+
+        System.out.printf("%-15s %-20s %-30s %-20s\n", "Employee ID", "Employee Name", "Employee Type", "Salary");
+        System.out.println("--------------------------------------------------------------------------------------------");
+
         for (Employee e : emplist) {
-            if (e instanceof CommissionEmployee) {
-                System.out.println(e);
-            }
+            String employeeType = e.getClass().getSimpleName();
+            double salary = e.computeSalary();
+            System.out.printf("%-15d %-20s %-30s %-20.2f \n", e.getEmpID(), e.getEmpName(), employeeType, salary);
         }
     }
 
-    void displayBCPE() {
-        for (Employee e : emplist) {
-            if (e instanceof BasedPlusCommissionEmployee) {
-                System.out.println(e);
-            }
-        }
-    }
-
-    void displayPWE() {
-        for (Employee e : emplist) {
-            if (e instanceof PieceWorkerEmployee) {
-                System.out.println(e);
-            }
-        }
-    }
 }

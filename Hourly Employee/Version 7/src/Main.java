@@ -2,11 +2,12 @@ public class Main {
     public static void main(String[] args) {
         EmployeeRoster roster = new EmployeeRoster();
 
+        // Creating employee instances and adding them to the roster
         Employee emp1 = new HourlyEmployee(1, "Regine Buenafe", 20, 40);
         Employee emp2 = new CommissionEmployee(2, "Eduardo Cortes", 9000);
         Employee emp3 = new BasedPlusCommissionEmployee("Christian Buenafe", 3, 1500.0F, 100);
         Employee emp4 = new PieceWorkerEmployee(4, "Miguel Cortes", 15, 100);
-        Employee emp5 = new PieceWorkerEmployee(5, "Edel Mellina", 15, 100);
+        Employee emp5 = new PieceWorkerEmployee(5, "Gin Lequit", 15, 100);
 
         roster.addEmployee(emp1);
         roster.addEmployee(emp2);
@@ -31,18 +32,7 @@ public class Main {
         System.out.println("\nPiece Worker Employees:");
         roster.displayPWE();
 
-        int idToRemove = 3;
-        Employee removedEmployee = roster.removeEmployee(idToRemove);
-        if (removedEmployee != null) {
-            System.out.println("\nRemoved employee with ID " + idToRemove + ": " + removedEmployee);
-        } else {
-            System.out.println("\nEmployee with ID " + idToRemove + " not found.");
-        }
-
-        System.out.println("\nUpdated Roster:");
-        roster.displayHE();
-        roster.displayCE();
-        roster.displayBCPE();
-        roster.displayPWE();
+        System.out.println("Employees: ");
+        roster.displayAllEmp();
     }
 }
