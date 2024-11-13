@@ -30,19 +30,5 @@ public class Main {
 
         System.out.println("\nPiece Worker Employees:");
         roster.displayPWE();
-
-        int idToRemove = 3;
-        Employee removedEmployee = roster.removeEmployee(idToRemove);
-        if (removedEmployee != null) {
-            System.out.println("\nRemoved employee with ID " + idToRemove + ": " + removedEmployee);
-        } else {
-            System.out.println("\nEmployee with ID " + idToRemove + " not found.");
-        }
-
-        System.out.println("\nUpdated Roster:");
-        roster.displayHE();
-        roster.displayCE();
-        roster.displayBCPE();
-        roster.displayPWE();
     }
 }
